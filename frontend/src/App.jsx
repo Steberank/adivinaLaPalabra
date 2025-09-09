@@ -12,11 +12,11 @@ function App() {
   return (
     <div className='main-container'>
     <Navbar />
-    <Rowcontainer>
-    {/*Aqui deberia ir lo que le pedi a Claude */}
-    </Rowcontainer>
+      <div className='board-container'>
+      {/*Aqui deberia ir lo que le pedi a Claude */}
+      </div>
     </div>
   )
 }
 
-export default App
+export default App;
