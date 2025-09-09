@@ -11,6 +11,7 @@
   box-sizing: border-box;
   background-color: #09090b;
   cursor: default;
+  color: white;
 }
 
 .square.editable {

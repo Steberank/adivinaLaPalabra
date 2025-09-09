@@ -4,7 +4,7 @@ import './Square.css';
 const Square = ({ 
   id, 
   row, 
-  colorID, 
+  colorID = 0, 
   isEditable = false, 
   isActive = false, 
   letterInside = '' 
@@ -29,11 +29,12 @@ const Square = ({
 
   return (
     <div
-      className={`square ${isEditable ? 'square.editable' : ''} ${isActive ? 'square.active' : ''}`}
+      className={`square ${isEditable ? 'editable' : ''} ${isActive ? 'active' : ''}`}
       style={{
         outline: `2px solid ${OutlineColor}`,
         outlineOffset: '-2px',
         background: `${ColorVar}`,
+        color: 'white'
       }}
       data-id={id}
       data-row={row}

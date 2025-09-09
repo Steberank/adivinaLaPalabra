@@ -1,31 +1,19 @@
 import React from 'react';
-import Square from './../components/Square.jsx';
 
 // Función para actualizar las props de un Square específico
-const updateSquareProps = (currentId, currentRow, updatedProps, existingProps = {}) => {
-  // Merge de las props existentes con las nuevas props
-  const newProps = {
-    id: currentId,
-    row: currentRow,
-    colorID: 0,
-    isEditable: false,
-    isActive: false,
-    letterInside: '',
-    ...existingProps,
-    ...updatedProps
-  };
-
-  // Retorna el componente Square con las props actualizadas
-  return (
-    <Square
-      id={newProps.id}
-      row={newProps.row}
-      colorID={newProps.colorID}
-      isEditable={newProps.isEditable}
-      isActive={newProps.isActive}
-      letterInside={newProps.letterInside}
-    />
-  );
+const updateSquareProps = (squares, targetId, targetRow, updatedProps) => {
+  return squares.map(square => {
+    // Si encontramos el Square que queremos actualizar
+    if (square.id === targetId && square.row === targetRow) {
+      // Retornamos el Square con las props actualizadas, manteniendo las existentes
+      return {
+        ...square, // Mantiene todas las props originales
+        ...updatedProps // Sobrescribe solo las que se especifiquen
+      };
+    }
+    // Si no es el Square que buscamos, lo retornamos sin cambios
+    return square;
+  });
 };
 
 export default updateSquareProps;
