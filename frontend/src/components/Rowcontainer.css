@@ -1,0 +1,11 @@
+.row-container {
+  display: flex;
+  flex-wrap: wrap;        /* Permite que baje de línea */
+  justify-content: center; /* Centra horizontalmente */
+  align-content: center; /* Las filas empiezan desde arriba */
+  align-items: center;   /* Asegura que cada fila arranque arriba */
+  max-width: 312px;         /* 52px * 5 = 260px (5 cuadrados por fila) */
+  margin: 0 auto;           /* Centrado horizontal del contenedor */
+  gap: 4px; 
+  height: 80vh;                /* Espacio entre cuadrados */
+}

@@ -1,0 +1,12 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;       /* ocupa todo el ancho */
+  height: 50px;      /* altura fija */
+  color: white;      /* color del texto */
+  display: flex;     /* usamos flexbox para centrar */
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  z-index: 1000;     /* para que siempre quede encima */
+}
