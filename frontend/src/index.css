@@ -73,52 +73,6 @@ h1 {
     border-color: #90CAF9;
 }
 
-.keypad {
-  max-width: 500px;
-  margin: 20px auto;
-  color: #FAFAFA;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1em; /* achica la letra, probá con 1em si querés más chico */
-  transition: color 0.3s ease; /* suave transición en hover */
-  user-select: none; /* evita selección de texto */
-  -webkit-user-select: none; /* compatibilidad con Safari/Chrome */
-  -moz-user-select: none;    /* compatibilidad con Firefox */
-  -ms-user-select: none;     /* compatibilidad con IE/Edge */
-}
-
-.keypad > div {
-  margin: 3px;
-  width: 40px;
-  height: 50px;
-  background: #3F4752;
-  display: inline-block;
-  border-radius: 6px;
-  line-height: 50px;
-  transition: background 0.3s ease;
-}
-
-.keypad > div:hover {
-  background: #5A6472; /* un gris más claro en hover */
-  cursor: pointer;     /* cambia el cursor a "mano" */
-}
-
-.keypad > div.green {
-  background: #5ac85a;
-  color: #fff;
-  transition: all 0.3s ease-in;
-}
-.keypad > div.yellow {
-  background: #e2cc68;
-  color: #fff;
-  transition: all 0.3s ease-in;
-}
-.keypad > div.grey {
-  background: #a1a1a1;
-  color: #fff;
-  transition: all 0.3s ease-in;
-}
-
 .modal {
   background: rgba(255,255,255,0.7);
   position: fixed;
