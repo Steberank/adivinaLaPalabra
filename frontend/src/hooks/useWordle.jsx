@@ -106,7 +106,7 @@ const useWordle = (solution) => {
         if(/^[A-Za-z]$/.test(key)){
             if(currentGuess.length < 5){
                 setCurrentGuess((prev) => {
-                    return prev + key
+                    return prev + key.toLowerCase();
                 })
             }
         }

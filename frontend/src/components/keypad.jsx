@@ -4,19 +4,19 @@ export default function Keypad( { usedKeys } ) {
     const [letters, setLetters] = useState(null)
 
     useEffect(() => {
-        fetch('http://localhost:3000/letters')
+        fetch('http://localhost:3000/letter')
         .then(res => res.json())
         .then(json => {
-            setLetters(json)
+            setLetters(json.data)
         })
     }, [])
 
   return (
     <div className='keypad'>
         {letters && letters.map((l) => {
-            const color = usedKeys[l.key]
+            const color = usedKeys[l.id]
             return (
-                <div key={l.key} className={color}>{l.key}</div>
+                <div key={l.id} className={color}>{l.id}</div>
             )
         })}
     </div>

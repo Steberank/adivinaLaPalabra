@@ -12,7 +12,7 @@ export default function Row( { guess, currentGuess } ) {
         )
     }
 
-    if(currentGuess){
+    if(currentGuess !== undefined){
         let letters = currentGuess.split('')
 
         return (
@@ -21,11 +21,12 @@ export default function Row( { guess, currentGuess } ) {
                     <div key={i} className='filled'>{letter}</div>
                 ))}
                 {[...Array(5 - letters.length)].map((v, i) => (
-                    <div key={i}></div>
+                    <div key={i} className={i === 0 ? 'border-blue' : ''}></div>
                 ))}
             </div>
         )
     }
+
 
   return (
     <div className='row'>

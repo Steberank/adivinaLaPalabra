@@ -1,4 +1,5 @@
 body {
+  background-color: #09090B;
   text-align: center;
   font-size: 1em;
   font-family: verdana;
@@ -9,7 +10,7 @@ h1 {
   padding: 20px 0;
   border-bottom: 1px solid #eee;
   margin: 0 0 30px 0;
-  color: #333;
+  color: #FAFAFA;
 }
 /* rows */
 .row {
@@ -19,15 +20,17 @@ h1 {
 }
 .row > div {
   display: block;
-  width: 60px;
-  height: 60px;
-  border: 1px solid #bbb;
+  width: 62px;
+  height: 62px;
+  border: 2px solid #424242;
   margin: 4px;
   text-align: center;
-  line-height: 60px;
+  line-height: 62px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2em;
+  border-radius: 4px;
+  color: #FAFAFA;
 }
 .row > div.green {
   --background: #5ac85a;
@@ -35,8 +38,8 @@ h1 {
   animation: flip 0.5s ease forwards;
 }
 .row > div.grey {
-  --background: #a1a1a1;
-  --border-color: #a1a1a1;
+  --background: #757575;
+  --border-color: #757575;
   animation: flip 0.5s ease forwards;
 }
 .row > div.yellow {
@@ -46,35 +49,58 @@ h1 {
 }
 
 .row > div:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 .row > div:nth-child(3) {
-  animation-delay: 0.4s;
+  animation-delay: 0.3s;
 }
 .row > div:nth-child(4) {
-  animation-delay: 0.6s;
+  animation-delay: 0.45s;
 }
 .row > div:nth-child(5) {
-  animation-delay: 0.8s;
+  animation-delay: 0.6s;
 }
 
 .row.current > div.filled {
   animation: bounce 0.2s ease-in-out forwards;
 }
 
+.row > div.border-gray {
+    border-color: #424242;
+}
+
+.row > div.border-blue {
+    border-color: #90CAF9;
+}
+
 .keypad {
   max-width: 500px;
   margin: 20px auto;
+  color: #FAFAFA;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1em; /* achica la letra, probá con 1em si querés más chico */
+  transition: color 0.3s ease; /* suave transición en hover */
+  user-select: none; /* evita selección de texto */
+  -webkit-user-select: none; /* compatibilidad con Safari/Chrome */
+  -moz-user-select: none;    /* compatibilidad con Firefox */
+  -ms-user-select: none;     /* compatibilidad con IE/Edge */
 }
 
 .keypad > div {
-  margin: 5px;
+  margin: 3px;
   width: 40px;
   height: 50px;
-  background: #eee;
+  background: #3F4752;
   display: inline-block;
   border-radius: 6px;
   line-height: 50px;
+  transition: background 0.3s ease;
+}
+
+.keypad > div:hover {
+  background: #5A6472; /* un gris más claro en hover */
+  cursor: pointer;     /* cambia el cursor a "mano" */
 }
 
 .keypad > div.green {
@@ -122,13 +148,13 @@ h1 {
 @keyframes flip {
   0% {
     transform: rotateX(0);
-    background: #ffff;
-    border-color: #333;
+    background: #09090B;
+    border-color: #424242;
   }
   45%{
     transform: rotateX(90deg);
-    background: #ffff;
-    border-color: #333;
+    background: #09090B;
+    border-color: #424242;
   }
   55%{
     transform: rotateX(90deg);
@@ -147,13 +173,13 @@ h1 {
 @keyframes bounce {
   0%{
     transform: scale(1);
-    border-color: #ddd;
+    /*border-color: #424242;*/
   }
   50%{
     transform: scale(1.2);
   }
   100%{
     transform: scale(1);
-    border-color: #333;
+    /*border-color: #424242;*/
   }
 }
