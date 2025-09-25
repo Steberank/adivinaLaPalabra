@@ -100,47 +100,10 @@
   }
 }
 
-@media (max-width: 500px) {
+
+@media (max-width: 620px) {
   .keypad-row > div {
     width: 35px;
-    height: 45px;
-    font-size: 0.9em;
-  }
-  
-  .keypad-special {
-    width: 60px;
-    height: 45px;
-    font-size: 0.55em;
-  }
-  
-  .keypad-special.keypad-enter {
-    width: 61px;
-  }
-}
-
-@media (max-width: 400px) {
-  .keypad-row > div {
-    width: 30px;
-    height: 40px;
-    font-size: 0.8em;
-    margin: 2px;
-  }
-  
-  .keypad-special {
-    width: 50px;
-    height: 40px;
-    font-size: 0.5em;
-    margin: 2px;
-  }
-  
-  .keypad-special.keypad-enter {
-    width: 51px;
-  }
-}
-
-@media (max-width: 320px) {
-  .keypad-row > div {
-    width: 25px;
     height: 35px;
     font-size: 0.7em;
     margin: 1px;
@@ -155,5 +118,9 @@
   
   .keypad-special.keypad-enter {
     width: 43px;
+  }
+
+    .keypad-special.keypad-backspace {
+    width: 35px;
   }
 }

@@ -136,3 +136,11 @@ h1 {
     /*border-color: #424242;*/
   }
 }
+
+@media (max-width: 620px) {
+  .row > div {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+  }
+}

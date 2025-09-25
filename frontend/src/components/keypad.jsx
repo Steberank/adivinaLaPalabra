@@ -6,11 +6,16 @@ export default function Keypad( { usedKeys, handleKeyup } ) {
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:3000/letter')
+        const API_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000' 
+            : `http://${window.location.hostname}:3000`;
+            
+        fetch(`${API_URL}/letter`)
         .then(res => res.json())
         .then(json => {
             setLetters(json.data)
         })
+        .catch(error => console.error('Error:', error));
     }, [])
 
     useEffect(() => {
@@ -60,7 +65,7 @@ export default function Keypad( { usedKeys, handleKeyup } ) {
                     )
                 })}
                 {isMobile && (
-                    <div className='keypad-special keypad-backspace' onClick={() => handleClick('Backspace')}>BACKSPACE</div>
+                    <div className='keypad-special keypad-backspace' onClick={() => handleClick('Backspace')}>⌫</div>
                 )}
             </div>
 

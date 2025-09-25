@@ -7,7 +7,11 @@ function App() {
   const [solution, setSolution] = useState(null);
 
 useEffect(() => {
-  fetch('http://localhost:3000/palabra')
+  const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000' 
+    : `http://${window.location.hostname}:3000`;
+    
+  fetch(`${API_URL}/palabra`)
     .then(response => response.json())
     .then(data => setSolution(data.solutions[0].palabra));
 }, []);
