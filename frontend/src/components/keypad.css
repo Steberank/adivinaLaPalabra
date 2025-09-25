@@ -4,42 +4,156 @@
   color: #FAFAFA;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1em; /* achica la letra, probá con 1em si querés más chico */
-  transition: color 0.3s ease; /* suave transición en hover */
-  user-select: none; /* evita selección de texto */
-  -webkit-user-select: none; /* compatibilidad con Safari/Chrome */
-  -moz-user-select: none;    /* compatibilidad con Firefox */
-  -ms-user-select: none;     /* compatibilidad con IE/Edge */
+  font-size: 1em;
+  transition: color 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
 }
 
-.keypad > div {
+/* Estilos para las filas del teclado */
+.keypad-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* Estilos para los cuadrados normales de letras */
+.keypad-row > div {
   margin: 3px;
   width: 40px;
   height: 50px;
   background: #3F4752;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
-  line-height: 50px;
   transition: background 0.3s ease;
+  text-align: center;
 }
 
-.keypad > div:hover {
-  background: #5A6472; /* un gris más claro en hover */
-  cursor: pointer;     /* cambia el cursor a "mano" */
+.keypad-row > div:hover {
+  background: #5A6472;
+  cursor: pointer;
 }
 
-.keypad > div.green {
+.keypad-row > div.green {
   background: #5ac85a;
   color: #fff;
   transition: all 0.3s ease-in;
 }
-.keypad > div.yellow {
+
+.keypad-row > div.yellow {
   background: #e2cc68;
   color: #fff;
   transition: all 0.3s ease-in;
 }
-.keypad > div.grey {
+
+.keypad-row > div.grey {
   background: #a1a1a1;
   color: #fff;
   transition: all 0.3s ease-in;
+}
+
+/* Estilos específicos para botones especiales */
+.keypad-special {
+  margin: 3px;
+  height: 50px;
+  background: #3F4752;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  text-align: center;
+  font-size: 0.7em;
+  width: 83px; /* BACKSPACE */
+}
+
+.keypad-special.keypad-enter {
+  width: 84px; /* ENTER */
+}
+.keypad-special.keypad-backspace {
+  width: 84px;
+}
+
+.keypad-special:hover {
+  background: #5A6472;
+  cursor: pointer;
+}
+
+/* Media queries para responsividad en móviles */
+@media (max-width: 600px) {
+  .keypad-special {
+    width: 70px;
+    font-size: 0.6em;
+  }
+  
+  .keypad-special.keypad-enter {
+    width: 71px;
+  }
+}
+
+@media (max-width: 500px) {
+  .keypad-row > div {
+    width: 35px;
+    height: 45px;
+    font-size: 0.9em;
+  }
+  
+  .keypad-special {
+    width: 60px;
+    height: 45px;
+    font-size: 0.55em;
+  }
+  
+  .keypad-special.keypad-enter {
+    width: 61px;
+  }
+}
+
+@media (max-width: 400px) {
+  .keypad-row > div {
+    width: 30px;
+    height: 40px;
+    font-size: 0.8em;
+    margin: 2px;
+  }
+  
+  .keypad-special {
+    width: 50px;
+    height: 40px;
+    font-size: 0.5em;
+    margin: 2px;
+  }
+  
+  .keypad-special.keypad-enter {
+    width: 51px;
+  }
+}
+
+@media (max-width: 320px) {
+  .keypad-row > div {
+    width: 25px;
+    height: 35px;
+    font-size: 0.7em;
+    margin: 1px;
+  }
+  
+  .keypad-special {
+    width: 42px;
+    height: 35px;
+    font-size: 0.45em;
+    margin: 1px;
+  }
+  
+  .keypad-special.keypad-enter {
+    width: 43px;
+  }
 }
