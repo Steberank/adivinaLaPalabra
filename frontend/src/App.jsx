@@ -8,10 +8,21 @@ function App() {
 
 useEffect(() => {
   const API_URL = import.meta.env.VITE_API_URL;
+
   fetch(`${API_URL}/palabra`)
     .then(response => response.json())
-    .then(data => setSolution(data.solutions[0].palabra));
+    .then(data => {
+      if (data.solutions && data.solutions.length > 0) {
+        
+        setSolution(data.solutions[0].palabra);
+      } else {
+        console.warn("No hay palabras para hoy");
+        setSolution(""); // o algún valor por defecto
+      }
+    })
+    .catch(error => console.error("Error al obtener la palabra:", error));
 }, []);
+
   return (
     <div className="App">
       <h1>Adivina la Palabra!</h1>

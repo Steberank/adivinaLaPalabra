@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const mysql = require('mysql2');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,21 +10,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'palabras_db',
-  port: process.env.DB_PORT || 3306
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Error conectando a la base de datos:', err);
-    return;
-  }
-  console.log('Conectado a la base de datos MySQL');
-});
+// Ruta del archivo JSON
+const palabrasPath = path.join(__dirname, 'db', 'palabras.json');
+// Si después querés letras en JSON:
+const letrasPath = path.join(__dirname, 'db', 'letters.json');
 
 app.get('/', (req, res) => {
   res.json({ 
@@ -34,26 +24,27 @@ app.get('/', (req, res) => {
 
 app.get('/palabra', (req, res) => {
   const today = new Date().toISOString().split('T')[0];
-  const query = 'SELECT id, palabra, fecha FROM palabras WHERE DATE(fecha) = ?';
-  
-  connection.query(query, [today], (err, results) => {
+
+  fs.readFile(palabrasPath, 'utf8', (err, data) => {
     if (err) {
-      return res.status(500).json({ error: 'Error al obtener las palabras' });
+      return res.status(500).json({ error: 'Error leyendo la base de datos de palabras' });
     }
-    
-    res.json({ solutions: results });
+
+    const palabras = JSON.parse(data);
+    const todayWords = palabras.filter(p => p.fecha === today);
+
+    res.json({ solutions: todayWords });
   });
 });
 
 app.get('/letter', (req, res) => {
-  const query = 'SELECT * FROM letras';
-  
-  connection.query(query, (err, results) => {
+  fs.readFile(letrasPath, 'utf8', (err, data) => {
     if (err) {
-      return res.status(500).json({ error: 'Error al obtener las letras' });
+      return res.status(500).json({ error: 'Error leyendo la base de datos de letras' });
     }
-    
-    res.json({ data: results });
+
+    const letters = JSON.parse(data);
+    res.json({ data: letters });
   });
 });
 

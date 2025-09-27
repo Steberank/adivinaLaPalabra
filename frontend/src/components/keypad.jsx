@@ -5,16 +5,22 @@ export default function Keypad( { usedKeys, handleKeyup } ) {
     const [letters, setLetters] = useState(null)
     const [isMobile, setIsMobile] = useState(false)
 
-    useEffect(() => {
-        const API_URL = import.meta.env.VITE_API_URL;
-            
-        fetch(`${API_URL}/letter`)
-        .then(res => res.json())
-        .then(json => {
-            setLetters(json.data)
-        })
-        .catch(error => console.error('Error:', error));
-    }, [])
+useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL;
+        
+    fetch(`${API_URL}/letter`)
+      .then(res => res.json())
+      .then(json => {
+          if (json.data && Array.isArray(json.data)) {
+              setLetters(json.data);
+          } else {
+              console.warn("No se encontraron letras en la base de datos");
+              setLetters([]); // valor por defecto
+          }
+      })
+      .catch(error => console.error("Error al obtener las letras:", error));
+}, []);
+
 
     useEffect(() => {
         // Detectar tipo de dispositivo
