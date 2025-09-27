@@ -4,8 +4,8 @@ services:
     env: node
     plan: free
     branch: main
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm run start
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm run start
     autoDeploy: true
     envVars:
       - key: NODE_ENV
