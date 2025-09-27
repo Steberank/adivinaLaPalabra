@@ -7,10 +7,7 @@ function App() {
   const [solution, setSolution] = useState(null);
 
 useEffect(() => {
-  const API_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000' 
-    : `http://${window.location.hostname}:3000`;
-    
+  const API_URL = import.meta.env.VITE_API_URL;
   fetch(`${API_URL}/palabra`)
     .then(response => response.json())
     .then(data => setSolution(data.solutions[0].palabra));
