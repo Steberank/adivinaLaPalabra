@@ -1,12 +1,11 @@
 services:
-  # Backend (Node + Express + MySQL)
   - type: web
     name: wordle-backend
     env: node
     plan: free
-    buildCommand: npm install
-    startCommand: node server.js
     branch: main
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm run start
     autoDeploy: true
     envVars:
       - key: NODE_ENV
@@ -21,13 +20,3 @@ services:
         value: palabras_db
       - key: DB_PORT
         value: 3306
-
-  # Frontend (React + Vite)
-  - type: static_site
-    name: wordle-frontend
-    buildCommand: npm install && npm run build
-    publishPath: dist
-    pullRequestPreviewsEnabled: true
-    envVars:
-      - key: VITE_API_URL
-        value: https://wordle-backend.onrender.com
