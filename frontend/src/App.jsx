@@ -14,7 +14,7 @@ useEffect(() => {
     .then(data => {
       if (data.solutions && data.solutions.length > 0) {
         
-        setSolution(data.solutions[0].palabra);
+        setSolution(data.solutions[0].palabra.toLowerCase());
       } else {
         console.warn("No hay palabras para hoy");
         setSolution(""); // o algún valor por defecto
