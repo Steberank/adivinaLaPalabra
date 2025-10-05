@@ -17,7 +17,7 @@ useEffect(() => {
         setSolution(data.solutions[0].palabra.toLowerCase());
       } else {
         console.warn("No hay palabras para hoy");
-        setSolution(""); // o algún valor por defecto
+        setSolution("lugar"); // o algún valor por defecto
       }
     })
     .catch(error => console.error("Error al obtener la palabra:", error));
