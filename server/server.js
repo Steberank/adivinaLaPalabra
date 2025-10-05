@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 // Endpoint para palabras del día
 app.get('/palabra', (req, res) => {
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const today = parseInt(new Date().toISOString().split('T')[0].replace(/-/g, ''), 10);
 
   const sql = 'SELECT * FROM palabras WHERE fecha = ?';
   db.query(sql, [today], (err, results) => {
