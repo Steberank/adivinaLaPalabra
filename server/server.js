@@ -53,9 +53,12 @@ app.get('/palabra', (req, res) => {
 
 // Endpoint para letras
 app.get('/letter', (req, res) => {
-  const sql = 'SELECT * FROM letters';
+  const sql = 'SELECT * FROM letras';
   db.query(sql, (err, results) => {
-    if (err) return res.status(500).json({ error: 'Error consultando la base de datos de letras' });
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: 'Error consultando la base de datos de letras' });
+    }
 
     res.json({ data: results });
   });
