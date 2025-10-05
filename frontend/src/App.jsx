@@ -11,16 +11,7 @@ useEffect(() => {
 
   fetch(`${API_URL}/palabra`)
     .then(response => response.json())
-    .then(data => {
-      if (data.solutions && data.solutions.length > 0) {
-        
-        setSolution(data.solutions[0].palabra.toLowerCase());
-      } else {
-        console.warn("No hay palabras para hoy");
-        setSolution("lugar"); // o algún valor por defecto
-      }
-    })
-    .catch(error => console.error("Error al obtener la palabra:", error));
+    .then(data => setSolution(data.solutions[0].palabra));
 }, []);
 
   return (
