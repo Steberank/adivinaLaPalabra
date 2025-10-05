@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     allowedHosts: [
-      'https://backendpalabra-production.up.railway.app',
-      'https://adivinalapalabra-production.up.railway.app'
+      'backendpalabra-production.up.railway.app',
+      'adivinalapalabra-production.up.railway.app'
     ]
   }
 });
