@@ -4,7 +4,7 @@ const cors = require('cors');
 const mysql = require('mysql2');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -42,7 +42,10 @@ app.get('/palabra', (req, res) => {
 
   const sql = 'SELECT * FROM palabras WHERE fecha = ?';
   db.query(sql, [today], (err, results) => {
-    if (err) return res.status(500).json({ error: 'Error consultando la base de datos de palabras' });
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: 'Error consultando la base de datos de palabras' });
+    }
 
     res.json({ solutions: results });
   });
